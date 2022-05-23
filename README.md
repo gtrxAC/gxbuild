@@ -9,7 +9,7 @@ gxbuild is a build system for applications using C and raylib.
 ## Setting up
 1. Change the options in `config.sh` to your liking (app name, compiler flags).
 2. If you're on Windows, download [w64devkit](https://github.com/skeeto/w64devkit/releases). Make sure you get a release zip, not the source code. Extract the archive somewhere and run `w64devkit.exe`. On Linux, just open a terminal.
-2. Follow the below instructions for the platform you want to build for.
+3. Follow the below instructions for the platform you want to build for.
 
 ### Desktop
 1. Run `./setup.sh` to set up the project.
@@ -22,8 +22,8 @@ gxbuild is a build system for applications using C and raylib.
 ### Android
 1. Download [Java](https://openjdk.java.net/) and extract it somewhere. On Linux, you can also install Java using a package manager (make sure you get the JDK, not just the JRE).
 2. Change the Java path in `config.sh`.
-2. Run `TARGET=Android ./setup.sh` to set up the project. You will need about 5 GB of free space.
-3. Run `TARGET=Android ./build.sh` to compile the project.
+3. Run `TARGET=Android ./setup.sh` to set up the project. You will need about 5 GB of free space.
+4. Run `TARGET=Android ./build.sh` to compile the project.
 
 ### Compiling for Windows from Linux
 1. Install `mingw-w64` using your package manager.
@@ -73,3 +73,42 @@ myFont = LoadFont("font.ttf");
 	ChangeDirectory("..");
 #endif
 ```
+
+## GitHub Actions
+GitHub Actions can be set up to automatically build your project when you push new changes, and give your users executables without them having to compile your project. Create a new file called `.github/workflows/main.yml` and paste these contents:
+
+```yml
+name: Build project
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Setup build environment
+        run: |
+          sudo apt update
+          sudo apt install mingw-w64
+          ./setup.sh
+          TARGET=Windows_NT ./setup.sh
+          
+      - name: Build project
+        run: |
+          ./build.sh
+          TARGET=Windows_NT ./build.sh
+
+      - uses: actions/upload-artifact@v3.0.0
+        with:
+          name: game-linux
+          path: game
+            
+      - uses: actions/upload-artifact@v3.0.0
+        with:
+          name: game-windows
+          path: game.exe
+```
+
+Replace all instances of `game` with your project's name, the same as defined in `config.sh`. This will only build for Windows and Linux.
