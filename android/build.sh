@@ -15,6 +15,7 @@ INCLUDES="-I. -Iinclude -I../include -I$NATIVE_APP_GLUE -I$TOOLCHAIN/sysroot/usr
 cp assets/icon_ldpi.png $BUILD/res/drawable-ldpi/icon.png
 cp assets/icon_mdpi.png $BUILD/res/drawable-mdpi/icon.png
 cp assets/icon_hdpi.png $BUILD/res/drawable-hdpi/icon.png
+cp assets/icon_xhdpi.png $BUILD/res/drawable-xhdpi/icon.png
 
 # Copy other assets
 cp assets/* android/build/assets

@@ -112,3 +112,5 @@ jobs:
 ```
 
 Replace all instances of `game` with your project's name, the same as defined in `config.sh`. This will only build for Windows and Linux.
+
+Note that by default, users must be logged in to GitHub to download the executables (artifacts). You can give your users a link like this to let them download without logging in: `https://nightly.link/YOURNAME/YOURREPO/workflows/main/main`. You can read more about this [here](https://nightly.link/).

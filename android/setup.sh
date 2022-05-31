@@ -9,7 +9,7 @@
 mkdir --parents $SDK $NDK $BUILD
 cd $BUILD
 mkdir --parents obj dex res/values src/com/$DEV_NAME/$PKG_NAME assets
-mkdir --parents res/drawable-ldpi res/drawable-mdpi res/drawable-hdpi
+mkdir --parents res/drawable-ldpi res/drawable-mdpi res/drawable-hdpi res/drawable-xhdpi
 
 # ______________________________________________________________________________
 #
@@ -72,6 +72,7 @@ cd ../..
 [[ -e assets/icon_ldpi.png ]] || cp raylib/logo/raylib_36x36.png assets/icon_ldpi.png
 [[ -e assets/icon_mdpi.png ]] || cp raylib/logo/raylib_48x48.png assets/icon_mdpi.png
 [[ -e assets/icon_hdpi.png ]] || cp raylib/logo/raylib_72x72.png assets/icon_hdpi.png
+[[ -e assets/icon_xhdpi.png ]] || cp raylib/logo/raylib_96x96.png assets/icon_xhdpi.png
 
 # Generate key for signing APKs
 cd android
