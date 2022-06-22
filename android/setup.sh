@@ -17,8 +17,14 @@ mkdir --parents res/drawable-ldpi res/drawable-mdpi res/drawable-hdpi res/drawab
 # ______________________________________________________________________________
 #
 case $(uname) in
-	"Windows_NT") SDK_OS="win";;
-	"Linux") SDK_OS="linux";;
+	"Windows_NT") 
+		SDK_OS="win"
+		NDK_OS="windows"
+		;;
+	"Linux")
+		SDK_OS="linux"
+		NDK_OS="linux"
+		;;
 esac
 
 # Download SDK
