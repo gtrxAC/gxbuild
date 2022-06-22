@@ -41,7 +41,7 @@ cd $SDK/cmdline-tools/bin
 
 # Download NDK
 cd $NDK/..
-[[ -e android-ndk.zip ]] || wget https://dl.google.com/android/repository/android-ndk-r23b-$SDK_OS.zip -O android-ndk.zip
+[[ -e android-ndk.zip ]] || wget https://dl.google.com/android/repository/android-ndk-r23b-$NDK_OS.zip -O android-ndk.zip
 unzip android-ndk
 
 # ______________________________________________________________________________
