@@ -17,8 +17,14 @@ mkdir --parents res/drawable-ldpi res/drawable-mdpi res/drawable-hdpi res/drawab
 # ______________________________________________________________________________
 #
 case $(uname) in
-	"Windows_NT") SDK_OS="win";;
-	"Linux") SDK_OS="linux";;
+	"Windows_NT") 
+		SDK_OS="win"
+		NDK_OS="windows"
+		;;
+	"Linux")
+		SDK_OS="linux"
+		NDK_OS="linux"
+		;;
 esac
 
 # Download SDK
@@ -35,7 +41,7 @@ cd $SDK/cmdline-tools/bin
 
 # Download NDK
 cd $NDK/..
-[[ -e android-ndk.zip ]] || wget https://dl.google.com/android/repository/android-ndk-r23b-$SDK_OS.zip -O android-ndk.zip
+[[ -e android-ndk.zip ]] || wget https://dl.google.com/android/repository/android-ndk-r23b-$NDK_OS.zip -O android-ndk.zip
 unzip android-ndk
 
 # ______________________________________________________________________________

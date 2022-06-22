@@ -66,8 +66,13 @@ SDK=$(pwd)/android/sdk/$(uname)
 NDK=$(pwd)/android/ndk/$(uname)/android-ndk-r23b
 BUILD=$(pwd)/android/build
 
+case $(uname) in
+	"Windows_NT") TOOLCHAIN_OS="windows-x86_64";;
+	"Linux") TOOLCHAIN_OS="linux-x86_64";;
+esac
+
 BUILD_TOOLS_VERSION=29.0.3
 BUILD_TOOLS=$SDK/build-tools/$BUILD_TOOLS_VERSION
-TOOLCHAIN=$NDK/toolchains/llvm/prebuilt/linux-x86_64
+TOOLCHAIN=$NDK/toolchains/llvm/prebuilt/$TOOLCHAIN_OS
 NATIVE_APP_GLUE=$NDK/sources/android/native_app_glue
 AR=$TOOLCHAIN/bin/llvm-ar
