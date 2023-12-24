@@ -11,7 +11,7 @@
 #  - Android                 TARGET=Android ./setup.sh
 # ______________________________________________________________________________
 #
-source config.sh
+source ./config.sh
 
 # Set up directory structure
 mkdir --parents include src assets lib/$TARGET

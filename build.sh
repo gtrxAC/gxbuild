@@ -14,7 +14,7 @@
 #  - Build and run           ./build.sh -r
 # ______________________________________________________________________________
 #
-source config.sh
+source ./config.sh
 
 # Add release or debug flags
 if [[ -z "$DEBUG" ]]; then
